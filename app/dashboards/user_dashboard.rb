@@ -1,5 +1,8 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
 
+require 'administrate/base_dashboard'
+
+# UserDashboard
 class UserDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
@@ -18,7 +21,7 @@ class UserDashboard < Administrate::BaseDashboard
     reset_password_sent_at: Field::DateTime,
     reset_password_token: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -65,7 +68,13 @@ class UserDashboard < Administrate::BaseDashboard
   #     open: ->(resources) { resources.where(open: true) }
   #   }.freeze
   COLLECTION_FILTERS = {
-    status: ->(resources, status) { status == 'active' ? resources.where(status: true) : status == 'inactive' ? resources.where(status: false) : resources },
+    status: lambda { |resources, status|
+              if status == 'active'
+                resources.where(status: true)
+              else
+                status == 'inactive' ? resources.where(status: false) : resources
+              end
+            }
   }.freeze
 
   # Overwrite this method to customize how users are displayed

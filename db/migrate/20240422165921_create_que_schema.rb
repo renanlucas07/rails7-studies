@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# CreateQueSchema
 class CreateQueSchema < ActiveRecord::Migration[7.0]
   def up
     # Whenever you use Que in a migration, always specify the version you're

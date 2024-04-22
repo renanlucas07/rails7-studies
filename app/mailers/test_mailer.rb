@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+# TestMailer
 class TestMailer < ApplicationMailer
   default from: 'rlucas@fullstacklabs.co'
 
   def hello
-    @greeting = "Hi"
+    @greeting = 'Hi'
 
-    mail to: "rlucas@fullstacklabs.co",
+    mail to: 'rlucas@fullstacklabs.co',
          track_opens: 'true',
          message_stream: 'outbound'
   end

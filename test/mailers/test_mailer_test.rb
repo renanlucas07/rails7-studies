@@ -1,12 +1,13 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class TestMailerTest < ActionMailer::TestCase
-  test "hello" do
+  test 'hello' do
     mail = TestMailer.hello
-    assert_equal "Hello", mail.subject
-    assert_equal ["rlucas@fullstacklabs.co"], mail.to
-    assert_equal ["rlucas@fullstacklabs.co"], mail.from
-    assert_match "Hi", mail.body.encoded
+    assert_equal 'Hello', mail.subject
+    assert_equal ['rlucas@fullstacklabs.co'], mail.to
+    assert_equal ['rlucas@fullstacklabs.co'], mail.from
+    assert_match 'Hi', mail.body.encoded
   end
-
 end

@@ -1,7 +1,9 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class HomeControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
+  test 'should get index' do
     user = users(:one)
     sign_in user
     get root_url
