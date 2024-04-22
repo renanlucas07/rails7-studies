@@ -49,6 +49,7 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 gem "administrate"
+gem 'bundle-audit'
 gem 'devise'
 gem 'postmark-rails'
 gem 'que'
