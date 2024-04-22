@@ -46,7 +46,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_22_192037) do
     t.check_constraint "char_length(last_error_message) <= 500 AND char_length(last_error_backtrace) <= 10000", name: "error_length"
     t.check_constraint "char_length(queue) <= 100", name: "queue_length"
     t.check_constraint "jsonb_typeof(args) = 'array'::text", name: "valid_args"
-    t.check_constraint "jsonb_typeof(data) = 'object'::text AND (NOT data ? 'tags'::text OR jsonb_typeof(data -> 'tags'::text) = 'array'::text AND jsonb_array_length(data -> 'tags'::text) <= 5 AND que_validate_tags(data -> 'tags'::text))", name: "valid_data"
   end
 
   create_table "que_lockers", primary_key: "pid", id: :integer, default: nil, force: :cascade do |t|

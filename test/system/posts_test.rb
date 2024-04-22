@@ -2,6 +2,8 @@ require "application_system_test_case"
 
 class PostsTest < ApplicationSystemTestCase
   setup do
+    user = users(:one)
+    sign_in user
     @post = posts(:one)
   end
 
@@ -17,7 +19,6 @@ class PostsTest < ApplicationSystemTestCase
     fill_in "Body", with: @post.body
     check "Published" if @post.published
     fill_in "Title", with: @post.title
-    fill_in "User", with: @post.user_id
     click_on "Create Post"
 
     assert_text "Post was successfully created"
@@ -31,7 +32,6 @@ class PostsTest < ApplicationSystemTestCase
     fill_in "Body", with: @post.body
     check "Published" if @post.published
     fill_in "Title", with: @post.title
-    fill_in "User", with: @post.user_id
     click_on "Update Post"
 
     assert_text "Post was successfully updated"
